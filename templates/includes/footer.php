@@ -1,5 +1,5 @@
-</div>
-				</div>
+                      </div>
+                 </div>
 			</div>
 			<div class="col-md-4">
 				<div class="sidebar">
@@ -39,6 +39,6 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="js/bootstrap.js"></script>
+    <script src="<?php echo BASE_URI; ?>templates/js/bootstrap.js"></script>
   </body>
 </html>

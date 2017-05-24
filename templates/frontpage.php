@@ -1,4 +1,4 @@
-<?php include 'includes/header.php' ?>
+<?php include 'includes/header.php'; ?>
 
     <ul id="topics">
         <li class="topic">
@@ -89,5 +89,5 @@
     <li>Total Number of Categories: <strong>5</strong></li>
 </ul>
 
-<?php include 'includes/footer.php' ?>
+<?php include 'includes/footer.php'; ?>
 

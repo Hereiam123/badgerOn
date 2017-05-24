@@ -1,4 +1,4 @@
-<?php include 'includes/header.php' ?>
+<?php include 'includes/header.php'; ?>
 
 <form role="form" enctype="multipart/form-data" method="post" action="register.php">
     <div class="form-group">
@@ -35,4 +35,4 @@
         <input name="register" type="submit" class="btn btn-default" value="Register" />
 </form>
 
-<?php include 'includes/footer.php' ?>
+<?php include 'includes/footer.php'; ?>
