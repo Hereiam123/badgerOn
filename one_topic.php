@@ -2,7 +2,7 @@
 
 <?php
     //Get Template & Assign Vars
-    $template = new Template('templates/topic.php');
+    $template = new Template('templates/one_topic.php');
 
     //Assign Vars
     $template->heading = 'This is the template heading';
