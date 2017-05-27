@@ -46,6 +46,26 @@
     }
 
     /*
+    *   Get topics by user
+    */
+    public function getByUser($user_id){
+
+        $this->db->query("SELECT topics.*, categories.*, users.username, users.avatar FROM topics
+                        INNER JOIN categories
+                        ON topics.category_id = categories.id
+                        INNER JOIN users
+                        ON topics.user_id=users.id
+                        WHERE topics.user_id = :user_id
+        ");
+
+        $this->db->bind(':user_id', $user_id);
+
+        //Assign Result Set
+        $results = $this->db->resultset();
+        return $results;
+    }
+
+    /*
      * Get Category By ID
     */
     public function getCategory($category_id){
