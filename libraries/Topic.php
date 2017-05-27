@@ -87,4 +87,37 @@
         $rows = $this->db->resultset();
         return $this->db->rowCount();
     }
+
+    /*
+    *   Get Topic
+    */
+    public function getTopic($topic_id){
+        $this->db->query("SELECT topics.*, users.username, users.avatar
+            FROM topics INNER JOIN users ON topics.user_id = users.id
+            WHERE topics.id=:topic_id");
+
+        $this->db->bind(':topic_id',$topic_id);
+
+        //Assign results
+        $row = $this->db->single();
+
+        return $row;
+    }
+
+    /*
+    *   Get replies
+    */
+    public function getReplies($topic_id){
+        $this->db->query("SELECT replies.*, users.* FROM replies
+            INNER JOIN users ON replies.user_id = users.id
+            WHERE replies.topic_id=:topic_id ORDER BY create_date ASC");
+
+        $this->db->bind(":topic_id", $topic_id);
+
+        //Assign results
+        $results = $this->db->resultset();
+
+        return $results;
+    }
+
 }?>

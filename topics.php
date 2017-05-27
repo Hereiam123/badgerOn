@@ -4,7 +4,10 @@
     //create Topics Object
     $topic = new Topic;
 
+    //Get category from url
     $category = isset($_GET['category']) ? $_GET['category'] : null;
+
+    $user_id = isset($_GET['user']) ? $_GET['user'] : null;
 
     //Get Template & Assign Vars
     $template = new Template('templates/topics.php');
@@ -15,6 +18,15 @@
     }
 
     if(!isset($category)){
+        $template->topics = $topics->getAllTopics();
+    }
+
+    if(isset($user_id)){
+        $template->topics = $topics->getByUser($user_id);
+        $template->title = 'Posts By "'.$user->getUser($user_id)->username.'"';
+    }
+
+    if(!isset($user_id)){
         $template->topics = $topics->getAllTopics();
     }
 
