@@ -107,6 +107,15 @@ class User{
 	    unset($_SESSION['name']);
 	    return true;
 	}
+
+	/*
+	*   Get total number of users for site
+	*/
+	public function getTotalUsers(){
+	    $this->db->query('SELECT * FROM users');
+	    $row = $this->db->resultSet();
+	    return $this->db->rowCount();
+	}
 }
 
 ?>
