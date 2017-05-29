@@ -52,4 +52,26 @@
     		echo '';
     	}
     }
+
+    /*
+    *   Check if user is logged in
+    */
+    function isLoggedIn(){
+        if(isset($_SESSION['is_logged_in'])){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    /*
+    *   Show user login data
+    */
+    function getUser(){
+        $userArray = array();
+        $userArray['user_id']=$_SESSION['user_id'];
+        $userArray['username']=$_SESSION['username'];
+        $userArray['name']=$_SESSION['name'];
+        return $userArray;
+    }
 ?>

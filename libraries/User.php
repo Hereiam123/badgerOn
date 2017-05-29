@@ -65,6 +65,48 @@ class User{
 			redirect('register.php', 'Invalid File Type!', 'error');
 		}
 	}
+
+	/*
+	*   Login user
+	*/
+	public function login($username,$password){
+	    $this->db->query("SELECT * FROM users WHERE username = :username
+	                     AND password = :password");
+
+	    $this->db->bind(':username',$username);
+	    $this->db->bind(':password',$password);
+
+	    $row = $this->db->single();
+
+	    //Check rows
+	    if($this->db->rowCount()>0){
+	        $this->setUserData($row);
+	        return true;
+	    }else{
+	        return false;
+	    }
+	}
+
+	/*
+	*   Set user data to session
+	*/
+	private function setUserData($row){
+	    $_SESSION['is_logged_in']=true;
+	    $_SESSION['user_id']=$row->id;
+	    $_SESSION['username']=$row->username;
+	    $_SESSION['name']=$row->name;
+	}
+
+	/*
+	*   Logout user
+	*/
+	public function logout(){
+	    unset($_SESSION['is_logged_in']);
+	    unset($_SESSION['user_id']);
+	    unset($_SESSION['username']);
+	    unset($_SESSION['name']);
+	    return true;
+	}
 }
 
 ?>
