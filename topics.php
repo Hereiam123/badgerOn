@@ -3,6 +3,7 @@
 <?php
     //Create Topics Object
     $topic = new Topic;
+    $user = new User;
 
     //Get category From URL
     $category = isset($_GET['category']) ? $_GET['category'] : null;
@@ -32,6 +33,7 @@
 
     $template->totalTopics = $topic->getTotalTopics();
     $template->totalCategories = $topic->getTotalCategories();
+    $template->totalUsers = $user->getTotalUsers();
 
     //Display template
     echo $template;
