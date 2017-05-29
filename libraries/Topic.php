@@ -161,4 +161,23 @@
         }
     }
 
+    /*
+    *   Create reply
+    */
+    public function reply($data){
+        //Insert Query
+        $this->db->query("INSERT INTO replies (topic_id, user_id, body)
+                                            VALUES (:topic_id, :user_id, :body)");
+        //Bind Values
+        $this->db->bind(':topic_id', $data['topic_id']);
+        $this->db->bind(':user_id', $data['user_id']);
+        $this->db->bind(':body', $data['body']);
+        //Execute
+        if($this->db->execute()){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 }?>
