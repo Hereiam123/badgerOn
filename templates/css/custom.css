@@ -24,7 +24,7 @@ h3{
 
 /* Navbar Customization */
 .navbar{
-	height:40px !important;
+	height:auto !important;
 	background:#5c5b69;
 	border:0;
 	margin-bottom:30px;
