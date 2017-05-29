@@ -2,6 +2,7 @@
 
 <?php
     $topic = new Topic;
+    $user = new User;
 
     if(isset($_POST['register'])){
         //Create Data Array
@@ -12,8 +13,24 @@
         $data['password']=md5($_POST['password']);
         $data['password2']=md5($_POST['password2']);
         $data['about']=$_POST['about'];
-        $data[';ast_activity']=date("Y-m-d H:i:s");
+        $data['last_activity']=date("Y-m-d H:i:s");
+
+        //Upload Avatar
+        if($user->uploadAvatar()){
+            $data['avatar']=$_FILES["avatar"]["name"];
+        }else{
+            $data['avatar']='noimage.png';
+        }
+
+        //Register User
+        if($user->register($data)){
+            redirect('index.php','You are registered and can now log in','success');
+        }else{
+            redirect('index.php','Something went wrong with registraction','error');
+        }
     }
+
+
 
     //Get Template & Assign Vars
     $template = new Template('templates/register.php');

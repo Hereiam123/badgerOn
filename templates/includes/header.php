@@ -47,3 +47,4 @@
 						<h4 class="pull-right">A place to badger on about things.</h4>
 						<div class="clearfix"></div>
 						<hr>
+						<?php displayMessage(); ?>
