@@ -66,7 +66,7 @@
     }
 
     /*
-     * Get Category By ID
+    * Get Category By ID
     */
     public function getCategory($category_id){
 
@@ -138,6 +138,27 @@
         $results = $this->db->resultset();
 
         return $results;
+    }
+
+    /*
+    * Create Topic
+    */
+    public function create($data){
+        //Insert Query
+        $this->db->query("INSERT INTO topics (category_id, user_id, title, body, last_activity)
+                                            VALUES (:category_id, :user_id, :title, :body, :last_activity)");
+        //Bind Values
+        $this->db->bind(':category_id', $data['category_id']);
+        $this->db->bind(':user_id', $data['user_id']);
+        $this->db->bind(':title', $data['title']);
+        $this->db->bind(':body', $data['body']);
+        $this->db->bind(':last_activity', $data['last_activity']);
+        //Execute
+        if($this->db->execute()){
+            return true;
+        } else {
+            return false;
+        }
     }
 
 }?>
